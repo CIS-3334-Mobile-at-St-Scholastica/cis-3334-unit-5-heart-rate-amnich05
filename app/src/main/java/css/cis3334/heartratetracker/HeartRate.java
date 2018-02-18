@@ -71,6 +71,7 @@ public class HeartRate {
 
     @Override
     public String toString() {
-        return "HeartRate = " + pulse + " - " + getRangeName();
+        return "\nHeartRate = " + pulse + "\nRange: " + getRangeName()
+                + "\n\"" + getRangeDescrtiption() + "\"\n";
     }
 }

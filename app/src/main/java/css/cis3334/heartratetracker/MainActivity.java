@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
 
         lvHeartRates = (ListView) findViewById(R.id.listViewHeartRates);
         tvSelect = (TextView) findViewById(R.id.textViewSelect);
-        
+
         heartRateList = new HeartRateList();
         heartRateList.InitRandomElderly();
 
@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
                 HeartRate hr = (HeartRate) parent.getItemAtPosition(position);
-                tvSelect.setText("You selected: " + hr.toString());
+                tvSelect.setText("Age: " + hr.getAge() + "\nYou selected: " + hr.toString());
             }
         });
     }

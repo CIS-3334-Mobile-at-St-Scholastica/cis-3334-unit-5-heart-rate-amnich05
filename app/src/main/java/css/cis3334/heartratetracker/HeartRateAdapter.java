@@ -2,6 +2,7 @@ package css.cis3334.heartratetracker;
 
 import android.app.Activity;
 import android.content.Context;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -47,8 +48,41 @@ public class HeartRateAdapter extends ArrayAdapter<HeartRate> {
         //get the heart rate we are displaying
         HeartRate hr = hrList.getHeartRate(position);
 
+        // set up textViewPulse
+        // getPulse from HeartRate
+        // set pulse to textViewPulse
         TextView tvPulse=(TextView)view.findViewById(R.id.textViewPulse);
         tvPulse.setText(hr.getPulse().toString());
+
+        // set up textViewRangeName
+        // get RangeName from HeartRate
+        // set range name to textViewRangeName
+        TextView tvRangeName = (TextView)view.findViewById(R.id.textViewRangeName);
+        tvRangeName.setText(hr.getRangeName().toString());
+
+        // set up textViewRangeDescription
+        // get RangeDescription from HeartRate
+        // set range description to textViewRangeName
+        TextView tvRangeDescription = (TextView)view.findViewById(R.id.textViewRangeDescription);
+        tvRangeDescription.setText("\"" + hr.getRangeDescrtiption().toString() + "\"");
+
+        // get range selected
+        // change textViewRangeName color based on range selected
+        Integer range = hr.getRange();
+
+        if (range == 1) { // Moderate
+            tvRangeName.setTextColor(ContextCompat.getColor(context, R.color.colorZone1));
+        }else if (range == 2) { // Endurance
+            tvRangeName.setTextColor(ContextCompat.getColor(context, R.color.colorZone2));
+        }else if (range == 3) { // Aerobic
+            tvRangeName.setTextColor(ContextCompat.getColor(context, R.color.colorZone3));
+        }else if (range == 4) { // Anaerobic
+            tvRangeName.setTextColor(ContextCompat.getColor(context, R.color.colorZone4));
+        }else if (range == 5) { // Red Zone
+            tvRangeName.setTextColor(ContextCompat.getColor(context, R.color.colorZone5));
+        }else { // Resting
+            tvRangeName.setTextColor(ContextCompat.getColor(context, R.color.colorZone0));
+        }
 
         return(view);
     }
